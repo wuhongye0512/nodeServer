@@ -2,7 +2,7 @@
  * @Author: hongye.wu hongye.wu@dounion.com
  * @Date: 2023-08-05 09:38:12
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2023-10-05 22:35:09
+ * @LastEditTime: 2023-10-05 22:39:56
  * @FilePath: /node-server/create-schema-tool/servers/index.js
  * @Description:
  *
@@ -36,12 +36,13 @@ router.post('/sendFile', (req, res) => {
   /* 设置编辑 */
   form.encoding = 'utf-8';
   //设置文件存储路劲
-  form.uploadDir =`${process.env.NODE_ENV === 'production' ? './servers/' : './'}tmplFile`;
+  // form.uploadDir =`${process.env.NODE_ENV === 'production' ? './servers/' : './'}tmplFile`;
+  form.uploadDir =`./servers/tmplFile`;
 
   //设置文件大小限制
   // form.maxFilesSize = 1 * 1024 * 1024;
   form.parse(req, function (err, fields, files) {
-    console.log(process.env.NODE_ENV,err, 'err, fields, files');
+    console.log(err, 'err, fields, files');
     try {
       let inputFile = files.file[0];
       let uploadedPath = inputFile.path;
