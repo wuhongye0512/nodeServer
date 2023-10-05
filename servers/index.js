@@ -2,7 +2,7 @@
  * @Author: hongye.wu hongye.wu@dounion.com
  * @Date: 2023-08-05 09:38:12
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2023-10-05 19:46:40
+ * @LastEditTime: 2023-10-05 20:16:43
  * @FilePath: /node-server/create-schema-tool/servers/index.js
  * @Description:
  *
@@ -41,6 +41,7 @@ router.post('/sendFile', (req, res) => {
   //设置文件大小限制
   // form.maxFilesSize = 1 * 1024 * 1024;
   form.parse(req, function (err, fields, files) {
+    console.log(err, fields, files, 'err, fields, files');
     try {
       let inputFile = files.file[0];
       let uploadedPath = inputFile.path;
@@ -49,7 +50,6 @@ router.post('/sendFile', (req, res) => {
       fs.renameSync(inputFile.path, newPath);
 
       let { data} = xlsx.parse(newPath)[0];
-      console.log(data);
 
       // 解析表
       const columns = [];
