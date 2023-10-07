@@ -3,7 +3,7 @@ name: deploy nodeServer
 on: 
   push:
     branches:
-      - 'main' #针对main分支
+      - 'main' # 针对main分支
     path:
       - '.github/workflows/*'
       - 'servers/**'
@@ -11,32 +11,32 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest #分配临时服务器 用完会回收
+    runs-on: ubuntu-latest # 分配临时服务器 用完会回收
 
     steps:
-      - uses: actions/checkout@v2 #第三方的 action 帮我们拉git仓库的所有代码
+      - uses: actions/checkout@v2 # 第三方的 action 帮我们拉git仓库的所有代码
 
-      - name: set id_rsa #设置rsa
+      - name: set id_rsa # 设置rsa
         run: |
           mkdir -p ~/.ssh/
           echo "${{secrets.MY_MAC_RSA}}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan 182.92.216.155 >>  ~/.ssh/known_hosts
         
-      - name: deploy #自动发布
+      - name: deploy # 自动发布
         run: |
-          ssh root@182.92.216.155"
+          ssh root@182.92.216.155 "
             #注意： 服务器已经git clone 代码到目标目录下
 
-            cd /root/myblog/nodeServer
-            git checkout -- .
-            git checkout main
-            git pull origin main
+            cd /root/myblog/nodeServer;
+            git checkout -- .;
+            git checkout main;
+            git pull origin main;
 
             #重启服务
             npm install
             npm run prd
           "
           
-      - name: delete id_rsa
-          run rm -rf ~/.ssh/id_rsa
+      - name: delete id_rsa # 删除id_rsa
+        run: rm -rf ~/.ssh/id_rsa
