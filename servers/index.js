@@ -2,7 +2,7 @@
  * @Author: hongye.wu hongye.wu@dounion.com
  * @Date: 2023-08-05 09:38:12
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2023-10-07 11:52:23
+ * @LastEditTime: 2023-10-07 14:04:42
  * @FilePath: /node-server/create-schema-tool/servers/index.js
  * @Description:
  *
@@ -37,7 +37,7 @@ const useRouter = (Router) => {
     //设置文件大小限制
     // form.maxFilesSize = 1 * 1024 * 1024;
     form.parse(req, function (err, fields, files) {
-      console.log(err, 'err, fields, files');
+      console.log('测试--');
       try {
         let inputFile = files.file[0];
         let uploadedPath = inputFile.path;
