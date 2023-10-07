@@ -20,6 +20,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh/
           echo "${{secrets.MY_MAC_RSA}}" > ~/.ssh/id_rsa
+          echo "${{secrets.MY_MAC_RSA}}"
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan 182.92.216.155 >>  ~/.ssh/known_hosts
         
