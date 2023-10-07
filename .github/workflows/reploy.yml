@@ -39,4 +39,4 @@ jobs:
           "
           
       - name: delete id_rsa #删除 id_rsa
-          run: rm -rf ~/.ssh/id_rsa
+          run rm -rf ~/.ssh/id_rsa
